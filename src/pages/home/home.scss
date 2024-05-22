@@ -1,3 +1,8 @@
 .home {
-    background-color: lightpink;
+    display: flex;
+
+    .homeContainer {
+        background-color: #f0f0f0;
+        flex: 6;
+    }
 }
