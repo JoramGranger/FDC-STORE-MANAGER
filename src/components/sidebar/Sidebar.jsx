@@ -84,7 +84,8 @@ const Sidebar = () => {
 
             {/* Bottom */}
             <div className="bottom">
-                color options
+                <div className="colorOption"></div>
+                <div className="colorOption"></div>
             </div>
         </div>
     )
