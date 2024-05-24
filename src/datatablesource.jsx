@@ -10,14 +10,28 @@ export const userColumns = [
             );
         },
     },
-]
+    {
+        field: "email", headerName: "Email", width: 230    
+    },
+    {
+        field: "age", headerName: "Age", width: 100    
+    },
+    {
+        field: "status", headerName: "Status", width: 160,
+        renderCell:(params) => {
+            return (
+                <div className={`cellWithStatus ${params.row.status}`}>{params.row.status}</div>                
+            )
+        }
+    },
+];
 
 export const userRows =
 [
   {
     "id": 1,
     "username": "johndoe",
-    "img": "https://example.com/images/johndoe.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "johndoe@example.com",
     "age": 28
@@ -25,7 +39,7 @@ export const userRows =
   {
     "id": 2,
     "username": "janedoe",
-    "img": "https://example.com/images/janedoe.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "janedoe@example.com",
     "age": 32
@@ -33,15 +47,15 @@ export const userRows =
   {
     "id": 3,
     "username": "alice",
-    "img": "https://example.com/images/alice.jpg",
-    "status": "active",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
+    "status": "pending",
     "email": "alice@example.com",
     "age": 25
   },
   {
     "id": 4,
     "username": "bob",
-    "img": "https://example.com/images/bob.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "bob@example.com",
     "age": 30
@@ -49,7 +63,7 @@ export const userRows =
   {
     "id": 5,
     "username": "charlie",
-    "img": "https://example.com/images/charlie.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "charlie@example.com",
     "age": 35
@@ -57,15 +71,15 @@ export const userRows =
   {
     "id": 6,
     "username": "david",
-    "img": "https://example.com/images/david.jpg",
-    "status": "active",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
+    "status": "pending",
     "email": "david@example.com",
     "age": 40
   },
   {
     "id": 7,
     "username": "eve",
-    "img": "https://example.com/images/eve.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "eve@example.com",
     "age": 22
@@ -73,7 +87,7 @@ export const userRows =
   {
     "id": 8,
     "username": "frank",
-    "img": "https://example.com/images/frank.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "frank@example.com",
     "age": 29
@@ -81,7 +95,7 @@ export const userRows =
   {
     "id": 9,
     "username": "grace",
-    "img": "https://example.com/images/grace.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "grace@example.com",
     "age": 27
@@ -89,7 +103,7 @@ export const userRows =
   {
     "id": 10,
     "username": "henry",
-    "img": "https://example.com/images/henry.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "henry@example.com",
     "age": 33
@@ -97,15 +111,15 @@ export const userRows =
   {
     "id": 11,
     "username": "isabel",
-    "img": "https://example.com/images/isabel.jpg",
-    "status": "inactive",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
+    "status": "pending",
     "email": "isabel@example.com",
     "age": 31
   },
   {
     "id": 12,
     "username": "jack",
-    "img": "https://example.com/images/jack.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "jack@example.com",
     "age": 26
@@ -113,7 +127,7 @@ export const userRows =
   {
     "id": 13,
     "username": "karen",
-    "img": "https://example.com/images/karen.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "karen@example.com",
     "age": 24
@@ -121,7 +135,7 @@ export const userRows =
   {
     "id": 14,
     "username": "leo",
-    "img": "https://example.com/images/leo.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "leo@example.com",
     "age": 37
@@ -129,15 +143,15 @@ export const userRows =
   {
     "id": 15,
     "username": "mia",
-    "img": "https://example.com/images/mia.jpg",
-    "status": "inactive",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
+    "status": "pending",
     "email": "mia@example.com",
     "age": 23
   },
   {
     "id": 16,
     "username": "nathan",
-    "img": "https://example.com/images/nathan.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "nathan@example.com",
     "age": 34
@@ -145,7 +159,7 @@ export const userRows =
   {
     "id": 17,
     "username": "olivia",
-    "img": "https://example.com/images/olivia.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "olivia@example.com",
     "age": 21
@@ -153,7 +167,7 @@ export const userRows =
   {
     "id": 18,
     "username": "peter",
-    "img": "https://example.com/images/peter.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "active",
     "email": "peter@example.com",
     "age": 39
@@ -161,7 +175,7 @@ export const userRows =
   {
     "id": 19,
     "username": "quinn",
-    "img": "https://example.com/images/quinn.jpg",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
     "status": "inactive",
     "email": "quinn@example.com",
     "age": 38
@@ -169,8 +183,8 @@ export const userRows =
   {
     "id": 20,
     "username": "rachel",
-    "img": "https://example.com/images/rachel.jpg",
-    "status": "active",
+    "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
+    "status": "pending",
     "email": "rachel@example.com",
     "age": 36
   }
