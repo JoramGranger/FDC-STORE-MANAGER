@@ -13,6 +13,8 @@ import DvrOutlinedIcon from '@mui/icons-material/DvrOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import {Link} from 'react-router-dom'
+
 
 const Sidebar = () => {
     return (
@@ -20,30 +22,40 @@ const Sidebar = () => {
 
             {/* Top */}
             <div className="top">
+                <Link to="/" style={{textDecoration: 'none'}}>
                 <span className="logo">Fortune Derma</span>
+                </Link>
             </div>
             <hr/>
             {/* Center */}
             <div className="center">
                 <ul>
                     <p className="title">MAIN</p>
+                    <Link to="/" style={{textDecoration: 'none'}}>
                     <li>
                         <DashboardIcon className="icon"/>
                         <span>Dashboard</span>
                     </li>
+                    </Link>
                     <p className="title">LISTS</p>
+                    <Link to="/users" style={{textDecoration: 'none'}}>
                     <li>
                         <PeopleOutlineIcon className="icon"/>
                         <span>Users</span>
                     </li>
+                    </Link>
+                    <Link to="/products" style={{textDecoration: 'none'}}>
                     <li>
                         <ShoppingBagOutlinedIcon className="icon"/>
                         <span>Products</span>
                     </li>
+                    </Link>
+                    <Link to="/" style={{textDecoration: 'none'}}>
                     <li>
                         <ShoppingCartOutlinedIcon className="icon"/>
                         <span>Orders</span>
                     </li>
+                    </Link>
                     <li>
                         <LocalShippingOutlinedIcon className="icon"/>
                         <span>Delivery</span>
