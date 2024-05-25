@@ -26,13 +26,14 @@ export const userInputs = [
     {
         id: 5,
         label: 'Password',
-        type: 'text', 
+        type: 'password',
+        placeholder: ' ', 
     },
     {
         id: 6  ,
         label: 'Address',
         type: 'text',
-        placeholder: 'Bukoto Street plot 6 ',
+        placeholder: 'Bukoto Street plot 6',
     },
 ];
 
