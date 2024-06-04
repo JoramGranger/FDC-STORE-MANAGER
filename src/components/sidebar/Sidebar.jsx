@@ -16,14 +16,27 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import {Link} from 'react-router-dom'
 import dashLogo from '../../assets/dashboard-logo-01.png'
 
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../features/auth/authSlice';
+
 
 const Sidebar = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      dispatch(logout());
+      navigate('/Login');
+    }; 
+
     return (
         <div className="sidebar">
 
             {/* Top */}
             <div className="top">
-                <Link to="/" style={{textDecoration: 'none'}}>
+                <Link to="/dashboard" style={{textDecoration: 'none'}}>
                 <span className="logo">
                     <img src={dashLogo} alt="Fortune Derma" />
                 </span>
@@ -86,11 +99,13 @@ const Sidebar = () => {
                         <span>Settings</span>
                     </li>
                     <p className="title">USER</p>
+                    <Link to="/profile" style={{textDecoration: 'none'}}>
                     <li>
                         <AccountCircleOutlinedIcon className="icon"/>
                         <span>Profile</span>
                     </li>
-                    <li>
+                    </Link>
+                    <li onClick={handleLogout}>
                         <LogoutOutlinedIcon className="icon"/>
                         <span>Logout</span>
                     </li>

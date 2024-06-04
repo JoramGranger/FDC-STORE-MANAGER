@@ -6,8 +6,13 @@ import Widget from "../../components/widget/Widget";
 import Chart from "../../components/chart/Chart";
 import Featured from "../../components/featured/Featured";
 import TableComponent from "../../components/table/Table";
+import { useSelector } from 'react-redux';
+
 
 const Home = () => {
+
+    const { user } = useSelector((state) => state.auth);
+
     return (
         <div className="home">
             <Sidebar />

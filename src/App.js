@@ -1,18 +1,27 @@
 import Home from "./pages/home/Home";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../src/features/auth/authSlice';
+
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import Profile from "./pages/profile/Profile";
+
 import { productInputs, userInputs } from "./formSource";
 import './style/dark.scss'
-import List2 from "./pages/list2/List2";
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  }; 
+
+
   return (
     <div className="app dark">
       <BrowserRouter>
@@ -35,6 +44,12 @@ function App() {
               <Route index element={<List /> } />
               <Route path=":productId" element={<Single />} />
               <Route path="new" element={<New inputs = {productInputs}/>} title={`Add New Product`}/>
+            </Route>
+
+            {/* profile */}
+            <Route path="profile">
+              <Route index element={<Profile />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
 
           </Route>
