@@ -2,9 +2,12 @@ import './datatable.scss'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 
 const Datatable = () => {
+
+  const [data, setData] = useState(userRows)
 
     const actionColumn = [
         {
@@ -29,12 +32,12 @@ const Datatable = () => {
     <div className='datatable'>
       <div className="dataTableTitle">
         Add New Product
-        <Link to="/users/new" style={{textDecoration: 'none'}} className='link'>
+        <Link to="/products/new" style={{textDecoration: 'none'}} className='link'>
           Add New
         </Link>
       </div>
          <DataGrid
-        rows={userRows}
+        rows={data}
         columns={userColumns.concat(actionColumn)}
         initialState={{
           pagination: {

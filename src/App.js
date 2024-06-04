@@ -9,16 +9,19 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { productInputs, userInputs } from "./formSource";
+import './style/dark.scss'
+import List2 from "./pages/list2/List2";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app dark">
       <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<Home/>}></Route> */}
           <Route path="/">
-            <Route index element={<Home />} />
+            <Route index element={<Login />} />
             <Route path="login" element={<Login />} />
+            <Route path="dashboard" element={<Home />} />
 
             {/* users */}
             <Route path="users">

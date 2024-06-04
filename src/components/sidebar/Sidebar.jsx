@@ -14,6 +14,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import {Link} from 'react-router-dom'
+import dashLogo from '../../assets/dashboard-logo-01.png'
 
 
 const Sidebar = () => {
@@ -23,7 +24,9 @@ const Sidebar = () => {
             {/* Top */}
             <div className="top">
                 <Link to="/" style={{textDecoration: 'none'}}>
-                <span className="logo">Fortune Derma</span>
+                <span className="logo">
+                    <img src={dashLogo} alt="Fortune Derma" />
+                </span>
                 </Link>
             </div>
             <hr/>
@@ -32,7 +35,7 @@ const Sidebar = () => {
                 <ul>
                     <p className="title">MAIN</p>
                     <Link to="/" style={{textDecoration: 'none'}}>
-                    <li>
+                    <li className="dash">
                         <DashboardIcon className="icon"/>
                         <span>Dashboard</span>
                     </li>
