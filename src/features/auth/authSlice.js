@@ -55,6 +55,9 @@ const authSlice = createSlice({
     setValidationErrors: (state, action) => {
       state.validationErrors = action.payload;
     },
+    clearValidationErrors: (state) => {
+      state.validationErrors = {};
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -92,5 +95,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setUsername, setPassword, setValidationErrors } = authSlice.actions;
+export const { logout, setUsername, setPassword, setValidationErrors, clearValidationErrors } = authSlice.actions;
 export default authSlice.reducer;

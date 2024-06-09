@@ -10,7 +10,7 @@ Modal.setAppElement('#root'); // Set the app element for accessibility
 
 const Profile = () => {
 
-    const { user } = useSelector((state) => state.auth);
+    const { user, loading, password, ValidationErrors } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     // State for password change form
@@ -18,6 +18,7 @@ const Profile = () => {
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [error, setError] = useState("");
 
     // handle change password form
@@ -72,7 +73,11 @@ const Profile = () => {
                     <div className="right">
                         <h1 className="title">Settings</h1>
                         <div className="profileSettings">
-                            <button className="profileButton">Edit Profile</button>
+                            <button className="profileButton"
+                            onClick={() => setIsProfileModalOpen(true)}
+                            >
+                                Edit Profile
+                            </button>
                             <button className="profileButton"
                             onClick={() => setIsModalOpen(true)}
                             >
@@ -82,6 +87,36 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
+            <Modal
+                isOpen={isProfileModalOpen}
+                onRequestClose={() => setIsProfileModalOpen(false)}
+                contentLabel="Edit Profile"
+                className="Modal"
+                overlayClassName="Overlay"
+            >
+                <h2 className="title">Edit Profile</h2>
+                <form className="changePasswordForm" onSubmit={handlePasswordChange}>
+                    <input
+                            type="text"
+                            placeholder={user?.username || "Username"}
+                            value={user?.username}
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                            required
+                        />
+                    <input
+                            type="text"
+                            placeholder={user?.email || "Email"}
+                            value={user?.email}
+                            onChange={(e) => setCurrentPassword(e.target.value)}
+                            required
+                        />
+                    {error && <p className="error">{error}</p>}
+                    <div className="modalButtons">
+                        <button type="submit" className="modalButton submitButton">Submit</button>
+                        <button type="button" className="modalButton cancelButton" onClick={() => setIsProfileModalOpen(false)}>Cancel</button>
+                    </div>
+                </form>
+            </Modal>
             <Modal
                 isOpen={isModalOpen}
                 onRequestClose={() => setIsModalOpen(false)}
@@ -114,8 +149,10 @@ const Profile = () => {
                         required
                     />
                     {error && <p className="error">{error}</p>}
-                    <button type="submit" className="modalButton">Submit</button>
-                    <button type="button" className="modalButton" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                    <div className="modalButtons">
+                        <button type="submit" className="modalButton submitButton">Submit</button>
+                        <button type="button" className="modalButton cancelButton" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                    </div>
                 </form>
             </Modal>
         </div>

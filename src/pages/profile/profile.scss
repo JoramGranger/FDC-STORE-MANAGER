@@ -108,6 +108,24 @@
         border-radius: 5px;
         border: 1px solid lightpink;
     }
+    .modalButtons {
+        flex: 1;
+        .modalButton {
+            width: 40%;
+            border: none;
+            padding: 15px 20px;
+            background-color: lightpink;
+            color: #040404;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 15px;
+            font-weight: 500;             
+        }
+        .cancelButton {
+            background-color: #040404;
+            color: lightpink;
+        }
+    }
     .error {
         color: red;
         font-size: 12px;
