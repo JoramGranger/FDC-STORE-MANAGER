@@ -59,7 +59,7 @@ const Login = () => {
                 {loading ? <div className="loader" /> : 'LOGIN'}
               </button>
               <p>DO NOT REMEMBER YOUR PASSWORD</p>
-              <p>CREATE A NEW ACCOUNT</p>
+              {/* <p>CREATE A NEW ACCOUNT</p> */}
               {error && <p className="error">{error}</p>}
             </form>
           </div>
