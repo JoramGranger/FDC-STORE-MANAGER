@@ -3,13 +3,9 @@ import './profile.scss';
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import { useSelector, useDispatch } from 'react-redux';
-import Modal from 'react-modal';
 import { changePassword } from "../../features/auth/authSlice";
 
-Modal.setAppElement('#root'); // Set the app element for accessibility
-
 const Profile = () => {
-
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -17,10 +13,9 @@ const Profile = () => {
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
     const [error, setError] = useState("");
 
-    // handle change password form
     const handlePasswordChange = (e) => {
         e.preventDefault();
         if (newPassword !== confirmNewPassword) {
@@ -32,7 +27,7 @@ const Profile = () => {
                 if (response.error) {
                     setError(response.error.message);
                 } else {
-                    setIsModalOpen(false);
+                    setShowChangePasswordForm(false);
                 }
             });
     };
@@ -73,53 +68,48 @@ const Profile = () => {
                         <h1 className="title">Settings</h1>
                         <div className="profileSettings">
                             <button className="profileButton">Edit Profile</button>
-                            <button className="profileButton"
-                            onClick={() => setIsModalOpen(true)}
+                            <button 
+                                className="profileButton"
+                                onClick={() => setShowChangePasswordForm(!showChangePasswordForm)}
                             >
                                 Change Password
                             </button>
                         </div>
+                        {showChangePasswordForm && (
+                            <div className="changePasswordForm">
+                                <h2>Change Password</h2>
+                                <form onSubmit={handlePasswordChange}>
+                                    <input
+                                        type="password"
+                                        placeholder="Current Password"
+                                        value={currentPassword}
+                                        onChange={(e) => setCurrentPassword(e.target.value)}
+                                        required
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="New Password"
+                                        value={newPassword}
+                                        onChange={(e) => setNewPassword(e.target.value)}
+                                        required
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Confirm New Password"
+                                        value={confirmNewPassword}
+                                        onChange={(e) => setConfirmNewPassword(e.target.value)}
+                                        required
+                                    />
+                                    {error && <p className="error">{error}</p>}
+                                    <button type="submit" className="profileButton">Submit</button>
+                                </form>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
-            <Modal
-                isOpen={isModalOpen}
-                onRequestClose={() => setIsModalOpen(false)}
-                contentLabel="Change Password"
-                className="Modal"
-                overlayClassName="Overlay"
-            >
-                <h2 className="title">Change Password</h2>
-                <form className="changePasswordForm" onSubmit={handlePasswordChange}>
-                    
-                    <input
-                        type="password"
-                        placeholder="Current Password"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="New Password"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="password"
-                        placeholder="Confirm New Password"
-                        value={confirmNewPassword}
-                        onChange={(e) => setConfirmNewPassword(e.target.value)}
-                        required
-                    />
-                    {error && <p className="error">{error}</p>}
-                    <button type="submit" className="modalButton">Submit</button>
-                    <button type="button" className="modalButton" onClick={() => setIsModalOpen(false)}>Cancel</button>
-                </form>
-            </Modal>
         </div>
-    )
-}
+    );
+};
 
 export default Profile;

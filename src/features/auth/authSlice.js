@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Real API call to Express server
+// login slice
 export const login = createAsyncThunk(
   'auth/login',
   async ({ username, password }, { rejectWithValue }) => {
@@ -12,6 +12,22 @@ export const login = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
+  }
+);
+
+// change password slice
+export const changePassword = createAsyncThunk(
+  'auth/changePassword',
+  async ({ currentPassword, newPassword }, { rejectWithValue }) => {
+      try {
+          const response = await axios.post('/api/auth/change-password', {
+              currentPassword,
+              newPassword,
+          });
+          return response.data;
+      } catch (error) {
+          return rejectWithValue(error.response.data);
+      }
   }
 );
 
@@ -42,6 +58,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    /* login */
       .addCase(login.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -58,6 +75,19 @@ const authSlice = createSlice({
         } else {
           state.error = action.error.message;
         }
+      })
+        /* changepassword */
+        // other extra reducers
+        .addCase(changePassword.pending, (state) => {
+          state.loading = true;
+          state.error = null;
+      })
+      .addCase(changePassword.fulfilled, (state, action) => {
+          state.loading = false;
+      })
+      .addCase(changePassword.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
       });
   },
 });
