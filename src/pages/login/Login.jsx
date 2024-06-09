@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect } from "react";
 import './login.scss'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
@@ -26,12 +26,15 @@ const Login = () => {
     };
 
     //  admin
-    if (user && user.isAdmin) {
+    useEffect(() => {
+      if (user && user.isAdmin) {
         navigate('/dashboard')
       }
     else {
       navigate('/login')
     }
+
+    }, [user, navigate]);
 
     return (
         <div className="login">
@@ -40,7 +43,7 @@ const Login = () => {
             <form onSubmit={handleLogin}>
               <input 
                 type="text" 
-                placeholder="Username" 
+                placeholder="Username"
                 value={username}
                 onChange={(e) => dispatch(setUsername(e.target.value))}
               />
