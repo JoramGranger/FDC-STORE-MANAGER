@@ -1,0 +1,30 @@
+{
+    "categories": [
+    {
+      "id": 1,
+      "name": "Skin Concern",
+      "children": [
+        { "id": 11, "name": "Acne" },
+        { "id": 12, "name": "Anti aging" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Skin Type",
+      "children": [
+        { "id": 21, "name": "Dry" },
+        { "id": 22, "name": "Oily" }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "By Category",
+      "children": [
+        { "id": 31, "name": "Babies" },
+        { "id": 32, "name": "Ladies" },
+        { "id": 33, "name": "Men" }
+      ]
+    }
+]
+}
+  

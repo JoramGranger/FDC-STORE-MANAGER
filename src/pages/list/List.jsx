@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './list.scss'
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";

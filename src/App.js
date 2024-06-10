@@ -6,9 +6,11 @@ import { logout } from '../src/features/auth/authSlice';
 
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
+import Users from "./pages/users/Users";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import Profile from "./pages/profile/Profile";
+import Settings from "./pages/settings/Settings";
 
 import { productInputs, userInputs } from "./formSource";
 import './style/dark.scss'
@@ -34,7 +36,7 @@ function App() {
 
             {/* users */}
             <Route path="users">
-              <Route index element={<List /> } />
+              <Route index element={<Users /> } />
               <Route path=":userId" element={<Single />} />
               <Route path="new" element={<New inputs = {userInputs}/>} title={`Add New User`}/>
             </Route>
@@ -50,6 +52,11 @@ function App() {
             <Route path="profile">
               <Route index element={<Profile />} />
               <Route path="profile" element={<Profile />} />
+            </Route>
+
+            {/* settings */}
+            <Route path="settings">
+              <Route index element={<Settings />} />
             </Route>
 
           </Route>

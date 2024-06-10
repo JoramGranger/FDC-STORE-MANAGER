@@ -68,6 +68,10 @@ const Profile = () => {
                                 <span className="profileKey">UserId:</span>
                                 <span className="profileValue">{user && user._id}</span>
                             </p>
+                            <p className="profileItem">
+                                <span className="profileKey">UserId:</span>
+                                <span className="profileValue">{user && user.accessToken}</span>
+                            </p>
                         </div>
                     </div>
                     <div className="right">

@@ -94,10 +94,12 @@ const Sidebar = () => {
                         <DvrOutlinedIcon className="icon"/>
                         <span>Logs</span>
                     </li>
+                    <Link to="/settings" style={{textDecoration: 'none'}}>
                     <li>
                         <SettingsOutlinedIcon className="icon"/>
                         <span>Settings</span>
                     </li>
+                    </Link>
                     <p className="title">USER</p>
                     <Link to="/profile" style={{textDecoration: 'none'}}>
                     <li>
