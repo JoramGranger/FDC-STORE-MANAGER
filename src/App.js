@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../src/features/auth/authSlice';
+import ProtectedRoute from './components/ProtectedRoute';
 
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";

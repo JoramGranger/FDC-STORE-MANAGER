@@ -2,12 +2,12 @@ import React, {useEffect } from "react";
 import './login.scss'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { login, setPassword, setValidationErrors, setUsername } from "../../features/auth/authSlice";
+import { login, setPassword, setEmail, setValidationErrors, setUsername } from "../../features/auth/authSlice";
 
 const Login = () => {
 
     // initials
-    const { user, loading, error, username, password, validationErrors } = useSelector((state) => state.auth); 
+    const { user, loading, error, email, username, password, validationErrors } = useSelector((state) => state.auth); 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -16,18 +16,20 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         const errors = {};
-        if (!username) errors.username = 'Username is required';
+        if (!email) errors.email = 'email is required';
         if (!password) errors.password = 'Password is required';
         if (Object.keys(errors).length > 0) {
           dispatch(setValidationErrors(errors));
+          console.log(user)
         } else {
-          dispatch(login({ username, password }));
+          dispatch(login({ email, password }));
         }
     };
 
     //  admin
     useEffect(() => {
-      if (user && user.isAdmin) {
+      console.log(user);
+      if (user && user.role === 'admin') {
         navigate('/dashboard')
       }
     else {
@@ -43,11 +45,11 @@ const Login = () => {
             <form onSubmit={handleLogin}>
               <input 
                 type="text" 
-                placeholder="Username"
-                value={username}
-                onChange={(e) => dispatch(setUsername(e.target.value))}
+                placeholder="Email"
+                value={email}
+                onChange={(e) => dispatch(setEmail(e.target.value))}
               />
-              {validationErrors.username && <p className="error">{validationErrors.username}</p>}
+              {validationErrors.email && <p className="error">{validationErrors.email}</p>}
               <input 
                 type="password" 
                 placeholder="Password"

@@ -4,9 +4,9 @@ import axios from 'axios';
 // login slice
 export const login = createAsyncThunk(
   'auth/login',
-  async ({ username, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+      const response = await axios.post('http://localhost:5000/api/users/login', { email, password });
       localStorage.setItem('token', response.data.accessToken);
       return response.data;
     } catch (error) {
@@ -39,6 +39,7 @@ const authSlice = createSlice({
     error: null,
     username: '',
     password: '',
+    email: '',
     validationErrors: {},
     token: localStorage.getItem('token') || null, // Initialize token from local storage
   },
@@ -49,6 +50,9 @@ const authSlice = createSlice({
     },
     setUsername: (state, action) => {
       state.username = action.payload;
+    },
+    setEmail: (state, action) => {
+      state.email = action.payload;
     },
     setPassword: (state, action) => {
       state.password = action.payload;
@@ -70,7 +74,9 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.user = action.payload.user; // Store user details
+        state.token = action.payload.accessToken; // Store token in Redux state
+        localStorage.setItem('token', action.payload.accessToken); // Save token in local storage
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -96,5 +102,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout, setUsername, setPassword, setValidationErrors, clearValidationErrors } = authSlice.actions;
+export const { logout, setUsername, setEmail, setPassword, setValidationErrors, clearValidationErrors } = authSlice.actions;
 export default authSlice.reducer;
