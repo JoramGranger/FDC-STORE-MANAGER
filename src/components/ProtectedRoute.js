@@ -16,7 +16,7 @@ const ProtectedRoute = ({ element, requiredRole, ...rest }) => {
     return <Navigate to="/unauthorized" />;
   }
 
-  return <Route {...rest} element={element} />;
+  // return <Route {...rest} element={element} />;
 };
 
 export default ProtectedRoute;
