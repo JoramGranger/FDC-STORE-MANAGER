@@ -39,15 +39,15 @@
         padding: 5px;
         border-radius: 5px;
 
-        &.active {
+        &.stocked {
             background-color: rgba(0, 128, 0, 0.05);
             color: green;
         }
-        &.inactive {
+        &.depleting {
             background-color: rgba(255, 217, 0, 0.05);
             color: goldenrod;
         }
-        &.pending {
+        &.depleted {
             background-color: rgba(255, 0, 0, 0.05);
             color: crimson;
         }

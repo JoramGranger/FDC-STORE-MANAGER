@@ -1,11 +1,11 @@
 export const productColumns = [
-    {field: "id", headerName: "ID", width: 70},
+    /* {field: "id", headerName: "ID", width: 70}, */
     {
         field: "name", headerName:"Name", width: 230, renderCell: (params) => {
             return (
                 <div className="cellWithImg">
-                    <img className="cellImg" src={params.row.img} alt="avatar"/>
-                    {params.row.username}
+                    <img className="cellImg" src={params.row.image} alt="avatar"/>
+                    {params.row.name}
                 </div>
             );
         },
@@ -23,8 +23,21 @@ export const productColumns = [
         field: "stock", headerName: "Stock", width: 160,
         renderCell:(params) => {
             return (
-                <div className={`cellWithStatus ${params.row.status}`}>{params.row.status}</div>                
+                <div className={`cellWithStatus ${getStockStatus(params.row.stock)}`}>{params.row.stock}</div>                
             )
         }
     },
 ];
+
+function getStockStatus(stock) {
+    if(stock === 0) {
+        return "depleted";
+    }
+    else if (stock < 10) {
+        return "depleting"
+    }
+    else {
+        return "stocked";
+    }
+}
+
