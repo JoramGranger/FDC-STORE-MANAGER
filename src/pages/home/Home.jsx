@@ -15,6 +15,7 @@ const Home = () => {
 
     return (
         <div className="home">
+            {console.log(user)}
             <Sidebar />
             <div className="homeContainer">
                 <Navbar />

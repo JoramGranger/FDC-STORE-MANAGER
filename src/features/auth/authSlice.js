@@ -37,6 +37,7 @@ const authSlice = createSlice({
     user: null,
     loading: false,
     error: null,
+    isAuthenticated: false,
     username: '',
     password: '',
     email: '',
@@ -46,6 +47,7 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = null;
+      state.isAuthenticated = false;
       localStorage.removeItem('token');
     },
     setUsername: (state, action) => {
@@ -76,6 +78,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.user = action.payload.user; // Store user details
         state.token = action.payload.accessToken; // Store token in Redux state
+        state.isAuthenticated = true;
         localStorage.setItem('token', action.payload.accessToken); // Save token in local storage
       })
       .addCase(login.rejected, (state, action) => {

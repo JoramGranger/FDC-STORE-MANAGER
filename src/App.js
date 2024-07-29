@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { logout } from '../src/features/auth/authSlice';
-import AppRoutes from './routes/appRoutes';
+import AppRoutes from '../src/routes/appRoutes';
 import './style/dark.scss';
 
 function App() {

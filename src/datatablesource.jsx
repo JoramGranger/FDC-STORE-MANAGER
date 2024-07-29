@@ -32,7 +32,7 @@ export const userRows =
     "id": 1,
     "username": "johndoe",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": 12,
     "email": "johndoe@example.com",
     "age": 28
   },
@@ -40,15 +40,15 @@ export const userRows =
     "id": 2,
     "username": "janedoe",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": 20,
     "email": "janedoe@example.com",
     "age": 32
   },
   {
     "id": 3,
-    "username": "alice",
+    "username": 5,
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "pending",
+    "stock": "pending",
     "email": "alice@example.com",
     "age": 25
   },
@@ -56,7 +56,7 @@ export const userRows =
     "id": 4,
     "username": "bob",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "bob@example.com",
     "age": 30
   },
@@ -64,7 +64,7 @@ export const userRows =
     "id": 5,
     "username": "charlie",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "charlie@example.com",
     "age": 35
   },
@@ -72,7 +72,7 @@ export const userRows =
     "id": 6,
     "username": "david",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "pending",
+    "stock": "pending",
     "email": "david@example.com",
     "age": 40
   },
@@ -80,7 +80,7 @@ export const userRows =
     "id": 7,
     "username": "eve",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "eve@example.com",
     "age": 22
   },
@@ -88,7 +88,7 @@ export const userRows =
     "id": 8,
     "username": "frank",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "frank@example.com",
     "age": 29
   },
@@ -96,7 +96,7 @@ export const userRows =
     "id": 9,
     "username": "grace",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "grace@example.com",
     "age": 27
   },
@@ -104,7 +104,7 @@ export const userRows =
     "id": 10,
     "username": "henry",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "henry@example.com",
     "age": 33
   },
@@ -112,7 +112,7 @@ export const userRows =
     "id": 11,
     "username": "isabel",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "pending",
+    "stock": "pending",
     "email": "isabel@example.com",
     "age": 31
   },
@@ -120,7 +120,7 @@ export const userRows =
     "id": 12,
     "username": "jack",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "jack@example.com",
     "age": 26
   },
@@ -128,7 +128,7 @@ export const userRows =
     "id": 13,
     "username": "karen",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "karen@example.com",
     "age": 24
   },
@@ -136,7 +136,7 @@ export const userRows =
     "id": 14,
     "username": "leo",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "leo@example.com",
     "age": 37
   },
@@ -144,7 +144,7 @@ export const userRows =
     "id": 15,
     "username": "mia",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "pending",
+    "stock": "pending",
     "email": "mia@example.com",
     "age": 23
   },
@@ -152,7 +152,7 @@ export const userRows =
     "id": 16,
     "username": "nathan",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "nathan@example.com",
     "age": 34
   },
@@ -160,7 +160,7 @@ export const userRows =
     "id": 17,
     "username": "olivia",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "olivia@example.com",
     "age": 21
   },
@@ -168,7 +168,7 @@ export const userRows =
     "id": 18,
     "username": "peter",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "active",
+    "stock": "active",
     "email": "peter@example.com",
     "age": 39
   },
@@ -176,7 +176,7 @@ export const userRows =
     "id": 19,
     "username": "quinn",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "inactive",
+    "stock": "inactive",
     "email": "quinn@example.com",
     "age": 38
   },
@@ -184,7 +184,7 @@ export const userRows =
     "id": 20,
     "username": "rachel",
     "img": "https://img.freepik.com/premium-photo/portrait-20s-african-man-headshot-portrait-young-adult-black-skin-african-man-west-african-young-adult-man-model_46728-2056.jpg?w=740",
-    "status": "pending",
+    "stock": "pending",
     "email": "rachel@example.com",
     "age": 36
   }
