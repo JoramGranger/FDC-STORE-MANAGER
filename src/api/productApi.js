@@ -4,11 +4,19 @@ import axios from 'axios';
 const API_URL = 'http://localhost:5000/api/products';
 
 // Create a new product
-export const createProduct = async (productData) => {
+export const createProduct = async (productData, token) => {
   try {
-    const response = await axios.post(API_URL, productData, { headers: { 'Content-Type': 'application/json' } });
+    const response = await axios.post(API_URL, productData, { 
+      headers: { 
+        /* 'Content-Type': 'application/json', */
+        'Content-Type': 'multipart/form-data', 
+        'Authorization': `Bearer ${token}`
+      } 
+    });
+    console.log(response.data);
     return response.data;
   } catch (error) {
+    console.log(error);
     console.error('Error creating product:', error);
     throw error;
   }

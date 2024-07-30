@@ -12,10 +12,12 @@ import { useSelector } from 'react-redux';
 const Home = () => {
 
     const { user } = useSelector((state) => state.auth);
+    const token = localStorage.getItem('token');
 
     return (
         <div className="home">
-            {console.log(user)}
+            {/* {console.log(user)}
+            {console.log(token)} */}
             <Sidebar />
             <div className="homeContainer">
                 <Navbar />
