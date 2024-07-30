@@ -34,10 +34,10 @@ export const changePassword = createAsyncThunk(
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
     loading: false,
     error: null,
-    isAuthenticated: false,
+    isAuthenticated: !!localStorage.getItem('token'),
     username: '',
     password: '',
     email: '',
@@ -48,7 +48,9 @@ const authSlice = createSlice({
     logout: (state) => {
       state.user = null;
       state.isAuthenticated = false;
+      state.token = null;
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
     setUsername: (state, action) => {
       state.username = action.payload;
@@ -76,10 +78,11 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload.user; // Store user details
-        state.token = action.payload.accessToken; // Store token in Redux state
+        state.user = action.payload.user;
+        state.token = action.payload.accessToken;
         state.isAuthenticated = true;
-        localStorage.setItem('token', action.payload.accessToken); // Save token in local storage
+        localStorage.setItem('token', action.payload.accessToken);
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
@@ -95,7 +98,7 @@ const authSlice = createSlice({
           state.loading = true;
           state.error = null;
       })
-      .addCase(changePassword.fulfilled, (state, action) => {
+      .addCase(changePassword.fulfilled, (state) => {
           state.loading = false;
       })
       .addCase(changePassword.rejected, (state, action) => {
