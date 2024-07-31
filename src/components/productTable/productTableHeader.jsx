@@ -1,5 +1,5 @@
 export const productColumns = [
-    /* {field: "id", headerName: "ID", width: 70}, */
+    {field: "id", headerName: "ID", width: 70},
     {
         field: "name", headerName:"Name", width: 230, renderCell: (params) => {
             return (

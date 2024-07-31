@@ -16,7 +16,7 @@ const ProductTable = () => {
       try {
         const data =  await getProducts();
         const dataWithId =  data.map((item) => ({id: item._id, ...item}));
-        setProducts(data);
+        setProducts(dataWithId);
       } catch(error) {
           console.error('Error fetching products:', error);
       }
@@ -31,10 +31,10 @@ const ProductTable = () => {
             field: "action", 
             headerName: "Action", 
             width: 200, 
-            renderCell: () => {
+            renderCell: (params) => {
             return(
                 <div className='cellAction'>
-                  <Link to="/users/test" style={{textDecoration: 'none'}}>
+                  <Link to={`/products/${params.row.id}`} style={{textDecoration: 'none'}}>
                     <div className="viewButton">Open</div>
                     </Link>
                     <div className="deleteButton">Delete</div>
