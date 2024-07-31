@@ -9,7 +9,7 @@ import Navbar from '../../components/navbar/Navbar';
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { users, loading, error } = useSelector((state) => state.users);
+  const { users, loading, error, token } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchUsers());

@@ -41,32 +41,37 @@ export const userInputs = [
 export const productInputs = [
     {
         id: 1,
-        label: 'Title',
+        label: 'Name',
         type: 'text',
+        name: 'name',
         placeholder: 'Anti-aging lotion',
     },
     {
         id: 2,
         label: 'Description',
         type: 'text',
+        name: 'description',
         placeholder: 'Description',
     },
     {
         id: 3,
         label: 'Category',
         type: 'text',
+        name: 'category',
         placeholder: 'Skin care',
     },
     {
         id: 4,
         label: 'Price',
-        type: 'text',
+        type: 'number',
+        name: 'price',
         placeholder: '65000',
     },
     {
         id: 5,
         label: 'Stock',
-        type: 'text',
-        placeholder: 'in stock',
+        type: 'number',
+        name: 'stock',
+        placeholder: '12',
     },
 ];

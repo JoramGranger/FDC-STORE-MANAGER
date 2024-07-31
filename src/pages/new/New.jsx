@@ -14,14 +14,14 @@ const New = ({inputs,title}) => {
     const [formData, setFormData] = useState({
         name: '',
         description: '',
-        price: '',
         category: '',
+        price: '',        
         stock: '',
         image: '',
     });
 
     const { token } = useSelector((state) => state.auth);
-    /* console.log(token); */
+    console.log(token);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -41,10 +41,16 @@ const New = ({inputs,title}) => {
     };
 
     const handleSubmit = async (e) => {
-        /* e.preventDefault(); */
+        e.preventDefault();
         const productData = new FormData();
         for (const key in formData) {
             productData.append(key, formData[key]);
+        }
+
+        // Log formData for debugging
+        console.log('FormData contents:');
+        for (let pair of productData.entries()) {
+            console.log(`${pair[0]}: ${pair[1]}`);
         }
 
         try {
@@ -53,14 +59,13 @@ const New = ({inputs,title}) => {
             }
             const newProduct = await createProduct(productData, token);
             console.log('Product created', newProduct);
+            console.log('File:', file);
+            console.log('FormData:', formData);
+            console.log('Token:', token);
         } catch (error) {
             console.error('Error creating product:', error);
         }
-    }
-
-    /* console.log('File:', file);
-    console.log('FormData:', formData);
-    console.log('Token:', token); */
+    };
 
     return (
         <div className="new">
@@ -81,14 +86,17 @@ const New = ({inputs,title}) => {
                         <form onSubmit={handleSubmit}>
                             <div className="formInput">
                                 <label htmlFor="file">
-                                    Image: <DriveFolderUploadIcon className="icon"/>
+                                    Image: <DriveFolderUploadIcon className="icon"/> 
                                     </label>
-                                <input type="file" id="file" onChange={handleFileChange} style={{display: "none"}}/>
+                                <input type="file" name="image" id="file" onChange={handleFileChange} style={{display: "none"}}/>
                             </div>
                            {inputs.map((input) => (
                             <div className="formInput" key={input.id}>
                                 <label>{input.label}</label>
-                                <input type={input.type} placeholder={input.placeholder}
+                                <input
+                                type={input.type}
+                                name={input.name} 
+                                placeholder={input.placeholder}                                
                                 onChange={handleInputChange}
                                 />
                             </div>
