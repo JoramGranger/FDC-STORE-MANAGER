@@ -1,10 +1,13 @@
+/* const imageUrl = `http://localhost:5000/${params.row.image.replace(/\\/g, '/')}`; */
 export const productColumns = [
     {field: "id", headerName: "ID", width: 70},
     {
         field: "name", headerName:"Name", width: 230, renderCell: (params) => {
             return (
                 <div className="cellWithImg">
-                    <img className="cellImg" src={params.row.image} alt="avatar"/>
+                    <img className="cellImg" 
+                    src={`http://localhost:5000/${params.row.image.replace(/\\/g, '/')}`}
+                    alt="avatar"/>
                     {params.row.name}
                 </div>
             );

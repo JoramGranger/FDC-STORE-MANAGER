@@ -10,6 +10,7 @@ import Single from "../pages/single/Single";
 import New from "../pages/new/New";
 import NewProduct from "../pages/product/NewProduct";
 import SingleProduct from "../pages/product/SingleProduct";
+import EditProduct from "../pages/product/EditProduct";
 import Profile from "../pages/profile/Profile";
 import Settings from "../pages/settings/Settings";
 import NotAuthorized from "../pages/errors/NotAuthorized";
@@ -32,6 +33,7 @@ const AppRoutes = () => {
       <Route path="products">
         <Route index element={<ProtectedRoute allowedRoles={['admin']}><Product /></ProtectedRoute>} />
         <Route path=":productId" element={<ProtectedRoute allowedRoles={['admin']}><SingleProduct /></ProtectedRoute>} />
+        <Route path=":productId/edit" element={<ProtectedRoute allowedRoles={['admin']}><EditProduct /></ProtectedRoute>} />
         <Route path="new" element={<ProtectedRoute allowedRoles={['admin']}><NewProduct inputs={productInputs} title="Add New Product" /></ProtectedRoute>} />
       </Route>
 

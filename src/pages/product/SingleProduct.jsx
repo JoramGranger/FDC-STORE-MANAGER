@@ -4,7 +4,7 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import Navbar from '../../components/navbar/Navbar'
 import Chart from '../../components/chart/Chart'
 import TableComponent from '../../components/table/Table'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductById } from '../../api/productApi';
 
 
@@ -43,7 +43,6 @@ const SingleProduct = () => {
                 <Navbar />
                 <div className="top">
                     <div className="left">
-                        <div className="EditButton">Edit</div>
                         <h1 className="title">Information</h1>
                         <div className="item">
                             <img 
@@ -76,6 +75,9 @@ const SingleProduct = () => {
                                 </div>
                             </div>
                         </div>
+                        <Link to={`/products/${productId}/edit`} className="editButton">
+                                Edit
+                        </Link>
                     </div>
                     {/* <div className="right">
                         <Chart aspect={3/1} title="User Spending (Last 6 Months)"/>
