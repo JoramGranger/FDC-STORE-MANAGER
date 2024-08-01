@@ -46,9 +46,15 @@ export const getProductById = async (productId) => {
 };
 
 // Update a product
-export const updateProduct = async (productId, productData) => {
+export const updateProduct = async (productId, productData, token) => {
   try {
-    const response = await axios.put(`${API_URL}/${productId}`, productData, { headers: { 'Content-Type': 'application/json' } });
+    const response = await axios.put(`${API_URL}/${productId}`, productData, 
+      { 
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${token}`
+        } 
+      });
     return response.data;
   } catch (error) {
     console.error('Error updating product:', error);
@@ -57,9 +63,14 @@ export const updateProduct = async (productId, productData) => {
 };
 
 // Delete a product
-export const deleteProduct = async (productId) => {
+export const deleteProduct = async (productId, token) => {
   try {
-    const response = await axios.delete(`${API_URL}/${productId}`);
+    const response = await axios.delete(`${API_URL}/${productId}`,{
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Bearer ${token}`
+      }
+  });
     return response.data;
   } catch (error) {
     console.error('Error deleting product:', error);
@@ -92,7 +103,8 @@ export const getProductsByCategory = async (category) => {
 // Update product stock
 export const updateProductStock = async (productId, stock) => {
   try {
-    const response = await axios.patch(`${API_URL}/${productId}/stock`, { stock }, { headers: { 'Content-Type': 'application/json' } });
+    const response = await axios.patch(`${API_URL}/${productId}/stock`, { stock }, 
+      { headers: { 'Content-Type': 'application/json' } });
     return response.data;
   } catch (error) {
     console.error('Error updating product stock:', error);

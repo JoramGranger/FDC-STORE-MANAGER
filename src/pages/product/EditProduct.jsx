@@ -6,14 +6,14 @@ import Navbar from '../../components/navbar/Navbar';
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import { getProductById, updateProduct } from "../../api/productApi";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const EditProduct = ({ inputs = [], title }) => {
+const EditProduct = () => {
     const { productId } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const [file, setFile] = useState("");
+    const [file, setFile] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -24,7 +24,6 @@ const EditProduct = ({ inputs = [], title }) => {
     });
 
     const { token } = useSelector((state) => state.auth);
-    console.log(token);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -42,8 +41,6 @@ const EditProduct = ({ inputs = [], title }) => {
                     image: data.image,
                 });
 
-                // debug
-                console.log(product);
             } catch (error) {
                 console.error('Error fetching product:', error);
             } finally {
@@ -65,21 +62,23 @@ const EditProduct = ({ inputs = [], title }) => {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         setFile(file);
-        setFormData((prevData) => ({
-            ...prevData,
-            image: file
-        }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const productData = new FormData();
         for (const key in formData) {
             productData.append(key, formData[key]);
         }
 
-        // Log formData for debugging
-        console.log('FormData contents:');
+        // If a new file is selected, use it; otherwise, use the existing image path
+        if (file) {
+            productData.set('image', file);
+        } else {
+            productData.set('image', formData.image);
+        }
+        
         for (let pair of productData.entries()) {
             console.log(`${pair[0]}: ${pair[1]}`);
         }
@@ -90,9 +89,7 @@ const EditProduct = ({ inputs = [], title }) => {
             }
             const updatedProduct = await updateProduct(productId, productData, token);
             console.log('Product updated', updatedProduct);
-            console.log('File:', file);
-            console.log('FormData:', formData);
-            console.log('Token:', token);
+            
         } catch (error) {
             console.error('Error updating product:', error);
         }
@@ -124,73 +121,58 @@ const EditProduct = ({ inputs = [], title }) => {
                                 </label>
                                 <input type="file" name="image" id="file" onChange={handleFileChange} style={{ display: "none" }} />
                             </div>
-                            {inputs.length > 0 ? inputs.map((input) => (
-                                <div className="formInput" key={input.id}>
-                                    <label>{input.label}</label>
-                                    <input
-                                        type={input.type}
-                                        name={input.name}
-                                        placeholder={input.placeholder}
-                                        value={formData[input.name] || ''}
-                                        onChange={handleInputChange}
-                                    />
-                                </div>
-                            )) : (
-                                <>
-                                    <div className="formInput">
-                                        <label>Name</label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            placeholder="Product Name"
-                                            value={formData.name}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                    <div className="formInput">
-                                        <label>Description</label>
-                                        <input
-                                            type="text"
-                                            name="description"
-                                            placeholder="Product Description"
-                                            value={formData.description}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                    <div className="formInput">
-                                        <label>Category</label>
-                                        <input
-                                            type="text"
-                                            name="category"
-                                            placeholder="Product Category"
-                                            value={formData.category}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                    <div className="formInput">
-                                        <label>Price</label>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            placeholder="Product Price"
-                                            value={formData.price}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                    <div className="formInput">
-                                        <label>Stock</label>
-                                        <input
-                                            type="number"
-                                            name="stock"
-                                            placeholder="Stock Quantity"
-                                            value={formData.stock}
-                                            onChange={handleInputChange}
-                                        />
-                                    </div>
-                                </>
-                            )}
+                            <div className="formInput">
+                                <label>Name</label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Product Name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="formInput">
+                                <label>Description</label>
+                                <input
+                                    type="text"
+                                    name="description"
+                                    placeholder="Product Description"
+                                    value={formData.description}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="formInput">
+                                <label>Category</label>
+                                <input
+                                    type="text"
+                                    name="category"
+                                    placeholder="Product Category"
+                                    value={formData.category}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="formInput">
+                                <label>Price</label>
+                                <input
+                                    type="number"
+                                    name="price"
+                                    placeholder="Product Price"
+                                    value={formData.price}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="formInput">
+                                <label>Stock</label>
+                                <input
+                                    type="number"
+                                    name="stock"
+                                    placeholder="Stock Quantity"
+                                    value={formData.stock}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
                             <button type="submit">Update</button>
-                            <button type="submit">Back</button>
+                            <button type="button" onClick={() => window.history.back()}>Back</button>
                         </form>
                     </div>
                 </div>
