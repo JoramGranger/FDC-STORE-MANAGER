@@ -69,16 +69,18 @@ const EditProduct = () => {
 
         const productData = new FormData();
         for (const key in formData) {
-            productData.append(key, formData[key]);
+            if (key !== 'image') {
+                productData.append(key, formData[key]);
+            }
         }
 
-        // If a new file is selected, use it; otherwise, use the existing image path
+        // If a new file is selected, append it to FormData
         if (file) {
-            productData.set('image', file);
-        } else {
-            productData.set('image', formData.image);
+            productData.append('image', file);
         }
-        
+
+        // Log formData for debugging
+        console.log('FormData contents:');
         for (let pair of productData.entries()) {
             console.log(`${pair[0]}: ${pair[1]}`);
         }
@@ -89,7 +91,7 @@ const EditProduct = () => {
             }
             const updatedProduct = await updateProduct(productId, productData, token);
             console.log('Product updated', updatedProduct);
-            
+
         } catch (error) {
             console.error('Error updating product:', error);
         }
