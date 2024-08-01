@@ -4,10 +4,14 @@ import { userColumns, userRows } from '../../datatablesource';
 import { productColumns } from './productTableHeader';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getProducts } from '../../api/productApi';
+import { getProducts, deleteProduct } from '../../api/productApi';
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 
 const ProductTable = () => {
+
+  const { token } = useSelector((state) => state.auth);
 
   const [products, setProducts] = useState([]);
 
@@ -26,6 +30,15 @@ const ProductTable = () => {
     console.log(products);
   }, []);
 
+  const handleDelete = async (productId) => {
+    try {
+      await deleteProduct(productId, token);
+      setProducts(products.filter((product) => product.id !== productId));
+    } catch (error) {
+      console.log('Error deleting product:', error);
+    }
+  }
+
     const actionColumn = [
         {
             field: "action", 
@@ -37,7 +50,9 @@ const ProductTable = () => {
                   <Link to={`/products/${params.row.id}`} style={{textDecoration: 'none'}}>
                     <div className="viewButton">Open</div>
                     </Link>
-                    <div className="deleteButton">Delete</div>
+                    <div className="deleteButton" onClick={() => handleDelete(params.row.id)}>
+                      Delete
+                    </div>
                 </div>
             )
         },
