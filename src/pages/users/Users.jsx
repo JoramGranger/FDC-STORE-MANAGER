@@ -6,6 +6,7 @@ import { fetchUsers } from '../../features/users/userSlice';
 import './users.scss';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
+import UserTable from '../../components/userTable/UserTable';
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -20,20 +21,7 @@ const Users = () => {
       <Sidebar />
       <div className="usersContainer">
         <Navbar />
-        <div className="top">
-          <div className="left">
-            <h1 className="title">Users</h1>
-            {loading && <p>Loading...</p>}
-            {error && <p className="error">{error}</p>}
-            {!loading && !error && (
-              <ul>
-                {users.map((user) => (
-                  <li key={user.id}>{user.username} - {user.email}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
+        <UserTable />
       </div>
     </div>
   );

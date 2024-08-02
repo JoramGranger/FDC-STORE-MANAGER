@@ -24,6 +24,7 @@ const EditProduct = () => {
     });
 
     const { token } = useSelector((state) => state.auth);
+    console.log(token);
 
     useEffect(() => {
         const fetchProduct = async () => {
