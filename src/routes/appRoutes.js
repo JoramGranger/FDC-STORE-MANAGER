@@ -13,6 +13,7 @@ import SingleProduct from "../pages/product/SingleProduct";
 import EditProduct from "../pages/product/EditProduct";
 import Profile from "../pages/profile/Profile";
 import Settings from "../pages/settings/Settings";
+import SingleUser from "../pages/users/SingleUser";
 import NotAuthorized from "../pages/errors/NotAuthorized";
 import { productInputs, userInputs } from "../formSource";
 
@@ -25,7 +26,7 @@ const AppRoutes = () => {
       {/* users */}
       <Route path="users">
         <Route index element={<ProtectedRoute allowedRoles={['admin']}><Users /></ProtectedRoute>} />
-        <Route path=":userId" element={<ProtectedRoute allowedRoles={['admin']}><Single /></ProtectedRoute>} />
+        <Route path=":userId" element={<ProtectedRoute allowedRoles={['admin']}><SingleUser /></ProtectedRoute>} />
         <Route path="new" element={<ProtectedRoute allowedRoles={['admin']}><New inputs={userInputs} title="Add New User" /></ProtectedRoute>} />
       </Route>
 

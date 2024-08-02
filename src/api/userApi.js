@@ -142,7 +142,9 @@ export const getAllUsers = async (token) => {
   // Fetch single user by ID
   export const getUserById = async (token, userId) => {
     const response = await axios.get(`${API_URL}/${userId}`, {
-      headers: { Authorization: `Bearer ${token}` }
+      headers: { 
+        Authorization: `Bearer ${token}` 
+      }
     });
     return response.data;
   };
