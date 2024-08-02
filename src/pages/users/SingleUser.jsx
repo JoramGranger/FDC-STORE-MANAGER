@@ -48,7 +48,7 @@ const SingleUser = () => {
                 <Navbar />
                 <div className="top">
                     <div className="left">
-                        <h1 className="title">Information</h1>
+                        <h1 className="title">User Information</h1>
                         <div className="item">
                             <img 
 /*                             src="https://images.thedermaco.com/catalog/user/c/o/combos-21-_1200x1200_.jpg" */
@@ -91,14 +91,52 @@ const SingleUser = () => {
                                 Deactivate
                         </Link>
                     </div>
-                    {/* <div className="right">
+                    <div className="left">
+                        <h1 className="title">Customer Information</h1>
+                        <div className="item">
+                            <div className="details">
+                                {/* <h1 className="itemTitle">user </h1> */}
+                                <div className="detailItem">
+                                    <span className="itemKey">Name:</span>
+                                    <span className="itemKey">{user.name}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Email:</span>
+                                    <span className="itemKey">{user.email}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Phone:</span>
+                                    <span className="itemKey">{user.phone}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Role:</span>
+                                    <span className="itemKey">{user.role}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Account status</span>
+                                    <span className="itemKey">{user.isVerified ? 'Verified' : 'Not Verified'}</span>
+                                </div>
+                                <div className="detailItem">
+                                    <span className="itemKey">Joined</span>
+                                    <span className="itemKey">{formatDateAndCalculateDays(user.createdAt)[0]}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <Link to={`/users/${userId}/edit`} className="actionButton editbtn">
+                                Edit
+                        </Link>
+                        <Link to={`/users/${userId}/deactivate`} className="actionButton debtn">
+                                Deactivate
+                        </Link>
+                    </div>
+                    <div className="right">
                         <Chart aspect={3/1} title="User Spending (Last 6 Months)"/>
-                    </div> */}
+                    </div>
                 </div>
-                {/* <div className="bottom">
+                 <div className="bottom">
                     <h1 className="title">Last Transactions</h1>
                     <TableComponent />
-                </div> */}
+                </div>
             </div>
         </div>
     )
