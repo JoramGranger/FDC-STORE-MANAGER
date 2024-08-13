@@ -1,0 +1,41 @@
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+  }
+  
+  .table-container th, 
+  .table-container td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .table-container th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .table-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-container tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .table-container td {
+    color: #555;
+  }
+  
+  .table-container .price, 
+  .table-container .total {
+    text-align: right;
+  }
+  
+  .table-container .quantity {
+    text-align: center;
+  }
+  
