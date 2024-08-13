@@ -66,7 +66,7 @@ const Sidebar = () => {
                         <span>Products</span>
                     </li>
                     </Link>
-                    <Link to="/" style={{textDecoration: 'none'}}>
+                    <Link to="/orders" style={{textDecoration: 'none'}}>
                     <li>
                         <ShoppingCartOutlinedIcon className="icon"/>
                         <span>Orders</span>
