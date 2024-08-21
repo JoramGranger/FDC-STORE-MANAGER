@@ -13,7 +13,7 @@ const SingleOrder = () => {
     const { orderId } = useParams();
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [status, setStatus] = useState(''); // Local state to manage status
+    const [status, setStatus] = useState(order?.status || ''); // Local state to manage status
 
     useEffect(() => {
         const fetchOrder = async () => {
@@ -33,7 +33,7 @@ const SingleOrder = () => {
 
     const handleStatusChange = async (newStatus) => {
         try {
-            await updateOrderStatus(orderId, newStatus, token);
+            await updateOrderStatus(orderId, { status: newStatus }, token);
             setStatus(newStatus); // Update local status
             // Optionally, refetch order data to ensure it's up to date
             const data = await getOrderById(orderId, token);
@@ -42,8 +42,6 @@ const SingleOrder = () => {
             console.error('Error updating order status:', error);
         }
     };
-
-    const statusOrder = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
     if (loading) return <div>Loading...</div>; // Display loading message or spinner
     if (!order) return <div>Order not found</div>;
@@ -105,18 +103,46 @@ const SingleOrder = () => {
                                 </div>
                             </div>
                         </div>
+                        <Link to={`/orders/${orderId}/update`} className="editButton">
+                            Edit
+                        </Link>
                         {/* Status Management Buttons */}
                         <div className="statusButtons">
-                            {statusOrder.map((stage, index) => (
-                                <button
-                                    key={stage}
-                                    onClick={() => handleStatusChange(stage)}
-                                    disabled={statusOrder.indexOf(status) > index || status === stage}
-                                    className={`statusButton ${stage.toLowerCase()}`}
-                                >
-                                    Mark as {stage}
-                                </button>
-                            ))}
+                            <button
+                                onClick={() => handleStatusChange('Pending')}
+                                disabled={status === 'Pending'}
+                                className="statusButton"
+                            >
+                                Mark as Pending
+                            </button>
+                            <button
+                                onClick={() => handleStatusChange('Processing')}
+                                disabled={status === 'Processing'}
+                                className="statusButton"
+                            >
+                                Mark as Processing
+                            </button>
+                            <button
+                                onClick={() => handleStatusChange('Shipped')}
+                                disabled={status === 'Shipped'}
+                                className="statusButton"
+                            >
+                                Mark as Shipped
+                            </button>
+                            <button
+                                onClick={() => handleStatusChange('Delivered')}
+                                disabled={status === 'Delivered'}
+                                className="statusButton"
+                            >
+                                Mark as Delivered
+                            </button>
+                            <button
+                                onClick={() => handleStatusChange('Cancelled')}
+                                disabled={status === 'Cancelled'}
+                                className="statusButton"
+                            >
+                                Mark as Cancelled
+                            </button>
                         </div>
                     </div>
                 </div>

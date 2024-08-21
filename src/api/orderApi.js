@@ -7,8 +7,7 @@ export const createOrderFromCart = async (userId, orderData, token) => {
   try {
     const response = await axios.post(`${API_URL}${userId}`, orderData, {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     });
     return response.data;
@@ -23,8 +22,7 @@ export const updateOrderStatus = async (orderId, status, token) => {
   try {
     const response = await axios.put(`${API_URL}${orderId}/update`, { status }, {
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     });
     return response.data;
